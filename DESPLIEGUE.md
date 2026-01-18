@@ -172,8 +172,8 @@ docker compose up -d
 - [x] 7) Contenedores activos
 - [x] 8) Persistencia (Volumen compartido)
 - [x] 9) Despliegue multi-sitio (/reloj)
-- [ ] 10) Cifrado SSL
-- [ ] 11) Redireccion forzada (301)
+- [x] 10) Cifrado SSL
+- [x] 11) Redireccion forzada (301)
 
 ### Parte 2 (RA2)
 - [ ] a) Parametros de administracion
