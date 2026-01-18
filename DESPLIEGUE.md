@@ -9,57 +9,77 @@ Este documento recopila todas las evidencias y respuestas de la practica.
 ### Fase 1: Instalacion y configuracion
 
 1) Servicio Nginx activo
-- Que demuestra:
-- Comando:
-- Evidencia:
+- Que demuestra: Muestra que el servicio Nginx está activo y en funcionamiento dentro del contenedor Docker. El comando `docker compose ps` lista los contenedores en ejecución, y la evidencia visual confirma que el contenedor Nginx está levantado y operativo.
+- Comando: 
+```bash
+docker compose ps
+```
+- Evidencia: ![img_1.png](assets/img/cmd-1.png)
 
 2) Configuracion cargada
-- Que demuestra:
+- Que demuestra: Muestra que los archivos de configuración de Nginx han sido correctamente cargados en el contenedor Docker. El comando `ls -l /etc/nginx/conf.d` lista los archivos en el directorio de configuración de Nginx, y la evidencia visual confirma que los archivos necesarios están presentes y accesibles dentro del contenedor.
 - Comando:
-- Evidencia:
+```bash
+  docker exec nginx_web ls -l /etc/nginx/conf.d
+```
+
+- Evidencia:![img.png](assets/img/cmd-2.png)
 
 3) Resolucion de nombres
-- Que demuestra:
-- Evidencia:
+- Que demuestra: Muestra que el contenedor Docker puede resolver nombres de dominio externos correctamente. El comando `ping -c 3 www.cloudacademy.com` envía tres paquetes ICMP al dominio especificado, y la evidencia visual confirma que las respuestas se reciben exitosamente, indicando que la resolución de nombres DNS está funcionando adecuadamente dentro del contenedor.
+- Evidencia: ![img.png](assets/img/cmd-3.png)
 
 4) Contenido Web
-- Que demuestra:
-- Evidencia:
+- Que demuestra: Muestra la pagina web alojada en el servidor Nginx, que contiene el contenido de Cloud Academy. La captura de pantalla evidencia que el servidor web está sirviendo correctamente el contenido esperado, confirmando que la configuración y despliegue del sitio web han sido exitosos.
+- Evidencia: ![Contenido Web](assets/img/web.png)
 
 ### Fase 2: Transferencia SFTP (Filezilla)
 
 5) Conexion SFTP exitosa
-- Que demuestra:
-- Evidencia:
+- Que demuestra: muestra el siguiente mensaje en el panel de conexión:
+```
+Conectando a localhost:2222...
+Estado:	Using username "webuser". 
+Estado:	Connected to localhost
+Estado:	Recuperando el listado del directorio...
+Estado:	Listing directory /
+Estado:	Directorio "/" listado correctamente
+```
+Este mensaje indica que la conexión SFTP se ha establecido correctamente con el servidor en localhost a través del puerto 2222, utilizando el nombre de usuario "webuser". Además, confirma que se ha recuperado y listado correctamente el contenido del directorio raíz ("/"), lo que demuestra que el acceso al servidor SFTP es exitoso y funcional.
+- Evidencia: ![Conexion SFTP](assets/img/cliente.png)
 
 6) Permisos de escritura
-- Que demuestra:
-- Evidencia:
+- Que demuestra: muestra que el archivo "index.html" ha sido subido correctamente al servidor SFTP y que los permisos de escritura son adecuados. El mensaje indica que el archivo se ha transferido sin errores, lo que confirma que el usuario tiene los permisos necesarios para escribir en el directorio del servidor.
+- Evidencia: ![Permisos de escritura](assets/img/archivos-subidos.png)
+
 
 ### Fase 3: Infraestructura Docker
 
 7) Contenedores activos
-- Que demuestra:
+- Que demuestra: Muestra que los contenedores Docker se están ejecutando correctamente en segundo plano. El comando `docker compose up -d` inicia los servicios definidos en el archivo de configuración de Docker Compose, y la evidencia visual confirma que los contenedores están activos y funcionando como se espera.
 - Comando:
-- Evidencia:
+```bash
+docker compose up -d
+```
+- Evidencia: ![cmd](assets/img/cmd-4.png)
 
 8) Persistencia (Volumen compartido)
-- Que demuestra:
-- Evidencia:
+- Que demuestra: Muestra que el volumen compartido entre el contenedor Docker y el host está funcionando correctamente. El archivo "index.html" subido a través de SFTP es accesible desde el contenedor Nginx, lo que confirma que los datos persisten y son compartidos adecuadamente entre el host y el contenedor ya que el archivo `docker-compose.yml` utiliza bind mounts.
+- Evidencia: ![docker-hub.png](assets/img/docker-hub.png)
 
 9) Despliegue multi-sitio
-- Que demuestra:
-- Evidencia:
+- Que demuestra: Muestra la pagina web secundaria alojada en el servidor Nginx, que contiene un reloj digital. La captura de pantalla evidencia que el servidor web está sirviendo correctamente el contenido del sitio adicional ubicado en la ruta "/reloj", confirmando que la configuracion de multi-sitio ha sido exitosa.
+- Evidencia: ![img.png](assets/img/reloj.png)
 
 ### Fase 4: Seguridad HTTPS
 
 10) Cifrado SSL
-- Que demuestra:
-- Evidencia:
+- Que demuestra: Muestra que la conexion al sitio web se realiza a través de HTTPS, indicando que el cifrado SSL está funcionando correctamente. La captura de pantalla evidencia que el navegador muestra el candado de seguridad en la barra de direcciones, confirmando que la comunicación entre el cliente y el servidor está protegida mediante SSL.
+- Evidencia: ![crt.png](assets/img/crt.png) ![key.png](assets/img/key.png)
 
 11) Redireccion forzada
-- Que demuestra:
-- Evidencia:
+- Que demuestra: Muestra que las solicitudes HTTP al sitio web son redirigidas automáticamente a HTTPS, confirmando que la redireccion forzada está implementada correctamente. La captura de pantalla evidencia que al intentar acceder al sitio web mediante HTTP, el navegador redirige la solicitud a la versión segura HTTPS, asegurando que todas las comunicaciones se realicen de manera segura.
+- Evidencia: ![img.png](assets/img/cmd-5.png)
 
 ---
 
@@ -143,15 +163,15 @@ Este documento recopila todas las evidencias y respuestas de la practica.
 ## Checklist final
 
 ### Parte 1
-- [ ] 1) Servicio Nginx activo
-- [ ] 2) Configuracion cargada
-- [ ] 3) Resolucion de nombres
-- [ ] 4) Contenido Web (Cloud Academy)
-- [ ] 5) Conexion SFTP exitosa
-- [ ] 6) Permisos de escritura
-- [ ] 7) Contenedores activos
-- [ ] 8) Persistencia (Volumen compartido)
-- [ ] 9) Despliegue multi-sitio (/reloj)
+- [x] 1) Servicio Nginx activo
+- [x] 2) Configuracion cargada
+- [x] 3) Resolucion de nombres
+- [x] 4) Contenido Web (Cloud Academy)
+- [x] 5) Conexion SFTP exitosa
+- [x] 6) Permisos de escritura
+- [x] 7) Contenedores activos
+- [x] 8) Persistencia (Volumen compartido)
+- [x] 9) Despliegue multi-sitio (/reloj)
 - [ ] 10) Cifrado SSL
 - [ ] 11) Redireccion forzada (301)
 
