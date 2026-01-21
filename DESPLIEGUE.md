@@ -86,35 +86,30 @@ docker compose up -d
 ## Parte 2 — Evaluacion RA2 (a–j)
 
 ### a) Parametros de administracion
-- Respuesta:
-- Evidencias:
-  - evidencias/a-01-grep-nginxconf.png
-  - evidencias/a-02-nginx-t.png
-  - evidencias/a-03-reload.png
+- Respuesta: Muestra como se han localizado y modificado los parametros de administracion en el archivo de configuracion de Nginx para permitir la recarga de la configuracion sin necesidad de reiniciar el servicio. Se ha utilizado el comando `grep` para buscar las directivas relevantes en el archivo `nginx.conf`, y luego se ha verificado la sintaxis de la configuracion con `nginx -t` antes de recargar el servicio con `nginx -s reload`.
+- Evidencias: ![a-01-grep-nginxconf](assets/img/a-01-grep-nginxconf.png) ![a-02-nginx-t](assets/img/a-02-nginx-.png) ![a-03-reload](assets/img/a-03-reload.png)
 
 ### b) Ampliacion de funcionalidad + modulo investigado
 - Opcion elegida (B1 o B2):
-- Respuesta:
-- Evidencias (B1 o B2):
-  - evidencias/b1-01-gzipconf.png
-  - evidencias/b1-02-compose-volume-gzip.png
-  - evidencias/b1-03-nginx-t.png
-  - evidencias/b1-04-curl-gzip.png
-  - evidencias/b2-01-defaultconf-headers.png
-  - evidencias/b2-02-nginx-t.png
-  - evidencias/b2-03-curl-https-headers.png
+- Respuesta: Muestra como se ha ampliado la funcionalidad de Nginx utilizando los modulos Gzip y de cabeceras de seguridad. Se han configurado ambos modulos en el archivo de configuracion de Nginx para habilitar la compresion de respuestas HTTP y agregar cabeceras de seguridad a las respuestas del servidor. Se ha verificado la correcta configuracion y funcionamiento de ambos modulos mediante comandos de prueba y revisando las cabeceras HTTP en las respuestas del servidor.
+- Evidencias (B1 y B2):![b1-01-gzipconf.png](assets/img/b1-01-gzipconf.png) ![b1-02-compose-volume-gzip](assets/img/b1-02-compose-volume-gzip.png) ![b1-03-nginx-t](assets/img/b1-03-nginx-t.png) ![b1-04-curl-gzip](assets/img/b1-04-curl-gzip.png) ![b2-01-defaultconf-headers](b2-01-defaultconf-headers.png) ![b2-02-nginx-t](b2-02-nginx-t.png) ![b2-03-curl-https-headers](b2-03-curl-https-headers.png)
+#### Modulo investigado 1: <Gzip>
+- Para que sirve: El modulo Gzip de Nginx se utiliza para comprimir las respuestas HTTP antes de enviarlas al cliente. Esto reduce el tamaño de los datos transferidos, lo que puede mejorar significativamente los tiempos de carga de las paginas web y reducir el uso del ancho de banda.
+- Como se instala/carga: El modulo Gzip viene incluido por defecto en las compilaciones estándar de Nginx, por lo que no es necesario instalarlo por separado. Para habilitarlo, se deben agregar las directivas de configuracion relacionadas con Gzip en el archivo `nginx.conf` o en los archivos de configuracion de los sitios.
+- Fuente(s): 
+  - https://nginx.org/en/docs/http/ngx_http_gzip_module.html
+  - https://www.digitalocean.com/community/tutorials/how-to-enable-gzip-compression-on-nginx
 
-#### Modulo investigado: <NOMBRE>
-- Para que sirve:
-- Como se instala/carga:
+#### Modulo investigado 1: <Cabeceras de seguridad>
+- Para que sirve: El modulo de cabeceras de seguridad en Nginx se utiliza para agregar cabeceras HTTP que mejoran la seguridad de las aplicaciones web. Estas cabeceras pueden ayudar a proteger contra diversas amenazas, como ataques de clickjacking, XSS (Cross-Site Scripting) y otros tipos de vulnerabilidades web.
+- Como se instala/carga: Al igual que el modulo Gzip, las cabeceras de seguridad se configuran directamente en los archivos de configuracion de Nginx. No es necesario instalar un modulo adicional, sino que se agregan las directivas correspondientes en el bloque `server` o `location` del archivo de configuracion.
 - Fuente(s):
+  - https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers
+  - https://www.nginx.com/blog/mitigating-web-attacks-nginx-security-headers/
 
 ### c) Sitios virtuales / multi-sitio
 - Respuesta:
-- Evidencias:
-  - evidencias/c-01-root.png
-  - evidencias/c-02-reloj.png
-  - evidencias/c-03-defaultconf-inside.png
+- Evidencias:![c-01-root(1).png](./assets/img/c-01-root(1).png)![c-01-root(2).png](c-01-root(2).png) ![img.png](assets/img/c-02-reloj.png) ![img_1.png](assets/img/c-03-defaultconf-inside.png)
 
 ### d) Autenticacion y control de acceso
 - Respuesta:
@@ -176,8 +171,8 @@ docker compose up -d
 - [x] 11) Redireccion forzada (301)
 
 ### Parte 2 (RA2)
-- [ ] a) Parametros de administracion
-- [ ] b) Ampliacion de funcionalidad + modulo investigado
+- [x] a) Parametros de administracion
+- [x] b) Ampliacion de funcionalidad + modulo investigado
 - [ ] c) Sitios virtuales / multi-sitio
 - [ ] d) Autenticacion y control de acceso
 - [ ] e) Certificados digitales
