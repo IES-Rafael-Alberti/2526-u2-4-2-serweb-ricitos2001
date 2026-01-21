@@ -295,7 +295,7 @@ Solución práctica y reproducible:
 - [x] d) Autenticacion y control de acceso
 - [x] e) Certificados digitales
 - [x] f) Comunicaciones seguras
-- [ ] g) Documentacion
-- [ ] h) Ajustes para implantacion de apps
-- [ ] i) Virtualizacion en despliegue
-- [ ] j) Logs: monitorizacion y analisis
+- [x] g) Documentacion
+- [x] h) Ajustes para implantacion de apps
+- [x] i) Virtualizacion en despliegue
+- [x] j) Logs: monitorizacion y analisis
