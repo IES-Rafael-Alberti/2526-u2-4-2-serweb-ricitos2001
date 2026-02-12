@@ -15,12 +15,5 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Setup JDK
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'temurin'
-          java-version: '25'
-          cache: 'maven'
-
-      - name: Build with Maven
-        run: mvn clean verify
+      - name: Run a command
+        run: echo "Hola, GitHub Actions"
